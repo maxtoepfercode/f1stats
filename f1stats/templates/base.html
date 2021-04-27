@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title> {{ page_title }}</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    
+    <header>
+        <div class="banner">
+            <h1> </h1>
+        </div>
+    </header>
+    <div class="grid">
+        <div id="headline" class="box box1" >Driver Comparison </div>
+        <div id ="f1picture" class="box box2"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/1280px-F1.svg.png" alt="offical-f1-logo" height="40px" ></div>
+        <div class="box box3">Comparison</div>
+    </div> 
+    <main>
+        <div class="drivers-grid">
+            <div> Sebatian Vettel</div>
+            <div> Lewis Hamilton</div>
+
+
+        </div>
+        
+        
+        
+        
+        {% block content%} {% endblock %}
+    </main>
+    <footer>
+        <h3> <em> Max website </em></h3>
+    </footer>
+</body>

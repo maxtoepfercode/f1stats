@@ -1,1 +1,1 @@
-from great_project.website import app  # noqa: F401
+from f1stats.website import app  # noqa: F401

@@ -1,0 +1,51 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.grid > div{
+    background: #ffffff;
+    padding: 1em;
+    border-radius: 5px; 
+}
+.grid > div:nth-child(odd){
+    background: #E10600;
+    border-radius: 5px;   
+}
+
+.grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 3fr;
+    grid-auto-rows: minmax(40px, auto);
+    grid-gap: 1em;
+    justify-items: stretch;
+  
+}
+
+#headline {
+    font-size: 30px;
+    padding-top: 1em;
+    
+
+}
+.headlinebox{
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+
+
+.drivers-grid{
+    display: grid;
+    grid-template-columns:(2,2fr);
+    background: coral;
+
+
+}
+.nested{
+    display: grid;
+}
+#f1picture{
+    background-color:#ffffff;
+    margin-top: 8px;
+    
+
+}
