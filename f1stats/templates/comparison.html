@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <title> {{ page_title }}</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    
+    <header>
+        <div class="banner">
+            <h1> </h1>
+        </div>
+    </header>
+    <main>
+        <!-- Navigation-->
+        <div class="grid">
+            <nav class="main-nav">
+                <ul>
+                    <li> <a href="/"> Home </a></li>
+                    <li> <a href="comparison.html"> Drivers Comparison</a></li> 
+                    <li> <a href="index.html"> Sign In </a></li>
+                    <li> <a href="#"> Register </a> </li>
+                </ul>
+
+
+
+
+            </nav>
+
+            <!-- Top Container-->
+            <section class="top-container">
+                <header class="showcase2">
+                    <h1>Drivers</h1>
+                    <p>Choose your drivers</p>
+                    <a href="comparison.html" class="btn"> Compare </a>
+                </header>
+
+                <div class="top-box top-box-a">
+                   
+                    <p class="drivername"> Driver 1</p>
+                    <div class="driver-select">
+                        <select>
+                            <option value="">Sebastian Vettel</option>
+                            <option value="">Lewis Hamilton</option>
+                            <option value="">Max Verstappen</option>
+                            <option value="">Sergio Perez</option>
+                            <option value="">Valtteri Bottas</option>
+                            <option value="">Lando Norris</option>
+                        </select>
+                        
+                     
+                    </div>
+                    
+                </div>
+                <div class="top-box top-box-b">
+                  
+                    <p class="drivername"> Driver 2</p>
+                    <div class="driver-select">
+                        <select>
+                            <option value="">Sebastian Vettel</option>
+                            <option value="">Lewis Hamilton</option>
+                            <option value="">Max Verstappen</option>
+                            <option value="">Sergio Perez</option>
+                            <option value="">Valtteri Bottas</option>
+                            <option value="">Lando Norris</option>
+                        </select>
+
+                    
+                    </div>
+                </div>
+
+            </section>
+            
+            <!-- Grand Prix selection-->
+            <section class="boxes2">
+                <div class="box2">
+                <header class="showcase3">
+                    <h2>Grand Prix</h2>
+                    <br>
+                    <div class="grandprix-select">
+                        <select>
+                            <option value="">Australia</option>
+                            <option value="">Bahrain</option>
+                            <option value="">Belgium</option>
+                            <option value="">France</option>
+                            <option value="">Monaco</option>
+                            <option value="">Italy</option>
+                        </select>
+                    
+                    </div>
+                    <br>
+                    <div class="year-select">
+                        <select>
+                            <option value="">2021</option>
+                            <option value="">2020</option>
+                            <option value="">2019</option>
+                            <option value="">2018</option>
+                            <option value="">2017</option>
+                            <option value="">2016</option>
+                        </select>
+                    
+                    </div>
+                    <br>
+                    <div class="session-select">
+                        <select>
+                            <option value="">Race</option>
+                            <option value="">Quali</option>
+                            <option value="">Practice</option>
+                        </select>
+                    
+                    </div>
+                    <br>
+                    <a href="" class="btn2"> Compare </a>
+
+                    
+                </header>
+                </div>
+
+            </section>
+            <!-- Info -->
+            <section class="info">
+                <div>
+                    <h2> Your Business on the web</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi sequi eveniet ducimus veritatis, quas odio esse ea voluptates. Pariatur, in.</p>
+                    <a href="#" class="btn">Learn more</a>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+        </div>
+        
+        
+        
+        
+        {% block content%} {% endblock %}
+    </main>
+    <footer>
+        <p>Max Toepfer &copy; 2021</p>
+    </footer>
+</body>

@@ -10,6 +10,13 @@ app.config.from_pyfile("config.py")
 def index():
     return render_template('index.html', page_title="f1stats")
 
+@app.route('/comparison.html')
+def comparison():
+    return render_template('comparison.html', page_title="f1stats")
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=8080, debug=True)
