@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-import sqlalchemy 
 import psycopg2
 from os import environ
 
