@@ -128,6 +128,7 @@ img{
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
+    grid-template-columns: repeat(2, 1fr);
    
 }
 
@@ -168,6 +169,12 @@ select{
     color: var(--light);
 
 }
+.showcase3 h3{
+    font-size: 4rem;
+    margin-bottom: 0;
+    color: var(--light);
+
+}
 /* Top Box */
 .top-box {
     background: var(--primary);
@@ -184,11 +191,12 @@ select{
 }
 .top-box-a{
     grid-area: top-box-a;
-    background: url(img/05.png);
+    background: url(img/VB77.jpg);
     background-position: center;
     background-size: cover;
     background-position: center;
     padding: 3rem;
+    background-position-y: -170px;
     
     
     
@@ -196,11 +204,12 @@ select{
 }
 .top-box-b{
     grid-area: top-box-b;
-    background: url(img/44.png);
+    background: url(img/LH44.jpg);
     background-position: center;
     background-size: cover;
     background-position: center;
     padding: 3rem;
+    background-position-y: -170px;
     
     
     

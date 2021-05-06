@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Comparison</title>
+    <title> Results</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
@@ -43,7 +43,7 @@
                    
                     <p class="drivername"> Driver 1</p>
                     <form action="driverdata" method="post">
-                    <div class="driver-select1">
+                    <div class="driver-select">
                         <select name="driver1">
                             {% for driver in drivers %}
                             <option value="{{driver}}">{{driver}}</option>
@@ -57,10 +57,10 @@
                 <div class="top-box top-box-b">
                   
                     <p class="drivername"> Driver 2</p>
-                    <div class="driver-select2">
+                    <div class="driver-select">
                         <select name="driver2">
                             {% for driver in drivers %}
-                            <option value="{{driver}}">{{driver}}</option>
+                            <option value="{{driver2}}">{{driver}}</option>
                             {% endfor %}
                         </select>
                         
@@ -71,43 +71,25 @@
             </section>
             
             <!-- Grand Prix selection-->
+            
+            
+            
             <section class="boxes2">
                 <div class="box2">
                 <header class="showcase3">
-                    <h2>Grand Prix</h2>
+                    <h2>Results</h2>
+                    <h3>
+                    {{driver1}}
                     <br>
-                    
-                    <div class="grandprix-select">
-                        <select name="track_type">
-                            {% for track in tracks %}
-                            <option value="{{track}}">{{track}}</option>
-                            {% endfor %}
-                        </select>
-                    
-                    </div>
+                    {{driver2}}
                     <br>
-                    <div class="year-select">
-                        <select name="year">
-                            {% for year in year %}
-                            <option value="{{year}}">{{year}}</option>
-                            {% endfor %}
-                        </select>
-                    
-                    </div>
+                    {{track}}
                     <br>
-                    <div class="session-select">
-                        <select name="session">
-                            {% for session in session %}
-                            <option value="{{session}}">{{session}}</option>
-                            {% endfor %}
-                        </select>
-                    
-                    </div>
+                    {{year}}
                     <br>
-                    <button type="submit" class="btn2"> Compare </button>
-                    </form>
-
-                    
+                   
+                    {{session}}
+                    </h3>
                 </header>
                 </div>
 
@@ -139,3 +121,5 @@
         <p>Max Toepfer &copy; 2021</p>
     </footer>
 </body>
+
+
