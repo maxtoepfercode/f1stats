@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
+#import sqlalchemy 
 from os import environ
 
 conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
@@ -41,9 +42,11 @@ for i in year:
 
 conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT \"POS\" FROM f1stage.f1data")
-position = cursor.fetchall()
-currentpos = [""]
+print(driver1)
+#print("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = ('"||driver1||"') AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
+#cursor.execute("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"||driver1||"' AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
+data = cursor.fetchall()
+data = [""]
 
 for i in year:
     currentpos.append(i[0])
