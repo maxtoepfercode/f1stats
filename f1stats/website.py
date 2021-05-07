@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import psycopg2
 import sqlalchemy 
 from os import environ
+import db
 
 conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
