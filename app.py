@@ -1,8 +1,10 @@
 import os
 from flask import Flask, render_template, request
 import psycopg2
-import sqlalchemy 
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 from os import environ
+
 app = Flask(__name__)
 if os.environ.get('DATABASE_URL'):
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
