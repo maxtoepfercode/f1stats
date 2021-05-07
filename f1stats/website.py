@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
-#import sqlalchemy 
+import sqlalchemy 
 from os import environ
 
 conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
@@ -40,23 +40,8 @@ currentyear = ["Year"]
 for i in year:
     currentyear.append(i[0])
 
-conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
-cursor = conn.cursor()
-print(driver1)
-#print("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = ('"||driver1||"') AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
-#cursor.execute("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"||driver1||"' AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
-data = cursor.fetchall()
-data = [""]
-
-for i in year:
-    currentpos.append(i[0])
 
 
-
-# LOGIC
-
-# SELECT "POS", "Drivers", "NO", "CAR", "SESSION", "TIME", "LAPS", "TRACK"
-# FROM f1stage.f1data WHERE "Drivers" = 'Sebastian Vettel                                  ' AND "TRACK" = 'RUS'|'2020' AND "SESSION" = 'FP'
 	   
 
 
@@ -72,7 +57,7 @@ def index():
 
 @app.route('/comparison.html')
 def comparison():
-    return render_template('comparison.html', page_title="f1stats", drivers = actualdrivers, session = currentsession, tracks = currenttracks, year = currentyear, position = currentpos)
+    return render_template('comparison.html', page_title="f1stats", drivers = actualdrivers, session = currentsession, tracks = currenttracks, year = currentyear)
 
 @app.route('/driverdata', methods = ["POST"])
 def driverdata():
@@ -82,28 +67,22 @@ def driverdata():
     year = request.form.get('year')
     year[3:]
     session = request.form.get('session')
-    position = currentpos
+    
+    #conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
+    #cursor = conn.cursor()
+    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
+    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
+    #cursor.execute("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"||driver1||"' AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
+    #data = cursor.fetchall()
+    #data = [""]
+
+    for i in data:
+
+        currentdata.append(i[0])
     
 
 
     return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session)
- 
- 
- 
- 
- #   conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
- #  cursor = conn.cursor()
- #   cursor.execute("SELECT" "POS", "Drivers", "NO", "CAR", "SESSION", "TIME", "LAPS", "TRACK"
- #   FROM f1stage.f1data WHERE "Drivers" = 'Sebastian Vettel                                  ' AND "TRACK" = 'RUS'|'2020' AND "SESSION" = 'FP'")
- #   year = cursor.fetchall()
- #   currentyear = [""]
-
-
-
-
-
- #   return (drivers = actualdrivers, session = currentsession, tracks = currenttracks, year = currentyear)
-
 
 
 
@@ -114,6 +93,3 @@ if __name__ == "__main__":
 
 
 
-# SELECT "POS", "Drivers", "NO", "CAR", "SESSION", "TIME", "LAPS", "TRACK"
-# FROM f1stage.f1data WHERE "Drivers" = 'Sebastian Vettel                                  ' AND "TRACK" = 'RUS'|'2020' AND "SESSION" = 'FP'
-	   
