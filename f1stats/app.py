@@ -1,5 +1,3 @@
-from f1stats.website import app  # noqa: F401
-import db
 import os
 from flask import Flask, render_template, request
 import psycopg2
@@ -10,7 +8,9 @@ if os.environ.get('DATABASE_URL'):
   app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 else:
   app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-  
+
+db = SQLAlchemy(app)  
+
 conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
 cursor.execute("SELECT DISTINCT \"Drivers\" FROM f1stage.f1data ORDER BY 1")
