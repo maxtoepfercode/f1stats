@@ -1,10 +1,15 @@
 /*CSS Variables */
-
+@import url(//db.onlinewebfonts.com/c/06d0fb8eb5251a7dba7660fab5d2f0f9?family=Formula1+Display+Bold);
+@font-face{
+    @font-face {font-family: "Formula1 Display Bold"; src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot"); src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff") format("woff"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.svg#Formula1 Display Bold") format("svg"); }
+    
+}
 :root {
     --primary: #ddd;
     --dark: #333;
     --light: #fff;
     --shadow: #0 1px 5px rgba (104, 104, 104, 0.8);
+    --red: #e10600;
 
 }
 
@@ -16,16 +21,16 @@ html {
 
 
 body {
-    background: #ccc;
+    background: var(--light);
     margin: 30px 50px;
     line-height: 1,4;
+    font-family: "Formula1 Display Bold", sans-serif
 }
 
 .btn {
     background: var(--dark);
     color: var(--light);
     padding: 0.6rem 1.3rem;
-    text-decoration: none;
     border: 0;
     
     
@@ -34,8 +39,8 @@ body {
     background: red;
     color: var(--light);
     padding: 0.6rem 1.3rem;
-    text-decoration: none;
     border: 0;
+    border-radius: 8px;
 }
 
 
@@ -59,15 +64,16 @@ img{
 }
 
 .main-nav a {
-    background: var(--primary);
+    background: var(--red);
     display: block;
     text-decoration: none;
     padding: 0.8rem;
     text-align: center;
-    color: var(--dark);
+    color: var(--light);
     text-transform: uppercase;
     font-size: 1.1rem;
     box-shadow: var(--shadow);
+    border-radius: 5px;
 }
 
 .main-nav a:hover {
@@ -75,6 +81,7 @@ img{
     color: var(--light);
 
 }
+
 
 /* Top Container */
 
@@ -91,7 +98,7 @@ img{
 .showcase{
     grid-area: showcase;
     min-height: 400px;
-    background: url(img/showcase.png);
+    background: url(img/startpage.jpg);
     background-size: cover;
     background-position: center;
     padding: 3rem;
@@ -100,6 +107,8 @@ img{
     align-items: start;
     justify-content: center;
     box-shadow: var(--shadow);
+    background-position: center;
+    border-radius: 8px;
    
 }
 .showcase2{
@@ -114,6 +123,7 @@ img{
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
+    border-radius: 8px;
     
 }
 .showcase3{
@@ -129,6 +139,7 @@ img{
     justify-content: center;
     box-shadow: var(--shadow);
     grid-template-columns: repeat(2, 1fr);
+    
    
 }
 
@@ -141,6 +152,7 @@ select{
     background: var(--dark);
     color: var(--light);
     border: 0;
+    border-radius: 8px;
 
 }
 
@@ -165,7 +177,7 @@ select{
 
 .showcase3 h2{
     font-size: 3rem;
-    margin-bottom: 0;
+    margin-top: 0;
     color: var(--light);
 
 }
@@ -173,8 +185,11 @@ select{
     font-size: 4rem;
     margin-bottom: 0;
     color: var(--light);
+    position: relative;
 
 }
+
+
 /* Top Box */
 .top-box {
     background: var(--primary);
@@ -191,12 +206,13 @@ select{
 }
 .top-box-a{
     grid-area: top-box-a;
-    background: url(img/VB77.jpg);
+    background: url(img/SV05.jpg);
     background-position: center;
     background-size: cover;
-    background-position: center;
     padding: 3rem;
-    background-position-y: -170px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+
     
     
     
@@ -204,12 +220,13 @@ select{
 }
 .top-box-b{
     grid-area: top-box-b;
-    background: url(img/LH44.jpg);
+    background: url(img/MV33.jpg);
     background-position: center;
     background-size: cover;
-    background-position: center;
     padding: 3rem;
-    background-position-y: -170px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    
     
     
     
@@ -217,10 +234,11 @@ select{
 }
 .drivername{
     font-size: 1.3rem;
-    margin-top: 0;
     color: var(--light);
 
 }
+
+
 /* Boxes */
 .boxes{
     display: grid;
@@ -234,19 +252,42 @@ select{
 }
 
 .box{
-    background: var(--primary);
+    background: var(--red);
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    color: var(--light);
+    border-radius: 8px;
+
 
 }
 .box2{
-    background: var(--primary);
+    background: var(--red);
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    border-radius: 8px;
 }
 
+.boxes-result{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+    box-shadow: var(--shadow);
+    background: var(--red);
+    background: url(img/results.jpg);
+    text-align: center;
+    border-radius: 8px;
+    color: var(--light);
+    background-position: top -820px;
+}
+.boxes-result h3{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    color: var(--dark);
+    position: relative;
+    color: var(--light);
+}
 .info{
     background: var(--primary);
     box-shadow: var(--shadow);
@@ -255,13 +296,44 @@ select{
     grid-template-columns: repeat(2, 1fr);
     padding: 3rem;
 }
-
+.info2{
+    background: var(--red);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    color: var(--light);
+    border-radius: 8px;
+}
+.info2 h2{
+    font-size: 2rem;
+}
+.info3{
+    background: url(img/pole.jpg);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr;
+    padding: 3rem;
+    color: var(--light);
+    text-align: left;
+    background-position: center;
+    background-size: cover;
+}
+.info3 h2{
+    font-size: 3rem;
+}
+.info3 p{
+    font-size: 1.2rem;
+}
 footer{
     margin-top: 2rem;
     background: var(--dark);
     color: var(--light);
     text-align: center;
     padding: 1rem;
+    border-radius: 8px;
 
 
 }

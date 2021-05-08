@@ -1,49 +1,39 @@
 import os
 from flask import Flask, render_template, request
 import psycopg2
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from os import environ
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-if os.environ.get('DATABASE_URL'):
-  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
-else:
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-
-db = SQLAlchemy(app)  
-
-conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
+conn = psycopg2.connect(host=os.environ.get("HOST"), database=os.environ.get("DATABASE"), user=os.environ.get("USER"), password=os.environ.get("PASSWORD"))
 cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT \"Drivers\" FROM f1stage.f1data ORDER BY 1")
+cursor.execute("SELECT DISTINCT \"Drivers\" FROM f1data ORDER BY 1")
 drivers = cursor.fetchall()
 actualdrivers = ["Driver"]
 
 for i in drivers:
     actualdrivers.append(i[0])
 
-conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
-cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT LEFT(\"TRACK\", 3) FROM f1stage.f1data ORDER BY 1")
+cursor.execute("SELECT DISTINCT LEFT(\"TRACK\", 3) FROM f1data ORDER BY 1")
 tracks = cursor.fetchall()
 currenttracks = ["Track"]
 
 for i in tracks:
     currenttracks.append(i[0])
 
-conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT \"SESSION\" FROM f1stage.f1data ORDER BY 1")
+cursor.execute("SELECT DISTINCT \"SESSION\" FROM f1data ORDER BY 1")
 session = cursor.fetchall()
 currentsession = ["Session"]
 
 for i in session:
     currentsession.append(i[0])
 
-
-conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
 cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT RIGHT(\"TRACK\", 4) FROM f1stage.f1data ORDER BY 1")
+cursor.execute("SELECT DISTINCT RIGHT(\"TRACK\", 4) FROM f1data ORDER BY 1")
 year = cursor.fetchall()
 currentyear = ["Year"]
 
@@ -77,30 +67,55 @@ def driverdata():
     year = request.form.get('year')
     year[3:]
     session = request.form.get('session')
+
+     # Funktion RECHTS
+    def right(s, amount):
+        return s[-amount:]
+
+    driverreplace = driver1.replace(" ", "")
+    driverreplace2 = driver2.replace(" ", "")
+
+    drivershort=right(driverreplace,5)
+    drivershort2=right(driverreplace2,5)
+
+    #drivershort=driverreplace[-5:]
+
+    #print(drivershort)
+    # SQL-Statement für die Abfrage der Ausgabe
+
+
+
     
-    #conn = psycopg2.connect(host="35.242.233.91", database="f1data", user="postgres", password=environ.get('DB_PASSWORD'))
-    #cursor = conn.cursor()
-    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
-    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
-    #cursor.execute("SELECT  f1data.\"TIME\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"||driver1||"' AND f1data.\"TRACK\" = ('"||track||year||"') AND f1data.\"SESSION\" = '"||session||"')
-    #data = cursor.fetchall()
-    #data = [""]
-
-    for i in data:
-
-        currentdata.append(i[0])
+    SQL="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
+    SQL2="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
+    
+    
+    conn = psycopg2.connect(host=os.environ.get("HOST"), database=os.environ.get("DATABASE"), user=os.environ.get("USER"), password=os.environ.get("PASSWORD"))
+    cursor = conn.cursor()
+    #print(SQL)
+    cursor.execute(SQL)
+    #cursor.execute("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data. WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'")
+    dbdata= cursor.fetchall()
+    
+    cursor = conn.cursor()
+    cursor.execute(SQL2)
+    dbdata2 = cursor.fetchall()
     
 
 
-    return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session)
+    return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session, dbdata = dbdata, dbdata2 = dbdata2)
 
 
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=True)
+    port=os.environ.get("PORT")
+    app.run(host="localhost", port=port, debug=True)
 
 
 
 
- 
+ #print(SQL)
+    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM   f1data. WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'")
+    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
+    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
