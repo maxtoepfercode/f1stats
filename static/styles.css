@@ -1,8 +1,8 @@
 /*CSS Variables */
 @import url(//db.onlinewebfonts.com/c/06d0fb8eb5251a7dba7660fab5d2f0f9?family=Formula1+Display+Bold);
 @font-face{
-    @font-face {font-family: "Formula1 Display Bold"; src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot"); src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff") format("woff"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.svg#Formula1 Display Bold") format("svg"); }
-    
+    @font-face {font-family: "Formula1 Display Bold"; src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot"); src: url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff") format("woff"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.ttf") src: font-url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot") format("truetype"), url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.svg#Formula1 Display Bold") format("svg"); }
+    src: font-url("//db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot")
 }
 :root {
     --primary: #ddd;
@@ -28,7 +28,7 @@ body {
 }
 
 .btn {
-    background: var(--dark);
+    background: var(--red);
     color: var(--light);
     padding: 0.6rem 1.3rem;
     border: 0;
