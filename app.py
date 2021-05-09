@@ -7,6 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Database access via psycopg2
+
+# Accessing the data for the selection menues
+
 app = Flask(__name__)
 conn = psycopg2.connect(host=os.environ.get("HOST"), database=os.environ.get("DATABASE"), user=os.environ.get("USER"), password=os.environ.get("PASSWORD"))
 cursor = conn.cursor()
@@ -40,16 +44,12 @@ currentyear = ["Year"]
 for i in year:
     currentyear.append(i[0])
 
-
-
-	   
-
-
-
 app = Flask(__name__)
 
 # configure Flask using environment variables
 app.config.from_pyfile("config.py")
+
+# Route section
 
 @app.route('/')
 def index():
@@ -68,7 +68,7 @@ def driverdata():
     year[3:]
     session = request.form.get('session')
 
-     # Funktion RECHTS
+    # Function that cuts right name part in order to bypass a query request error
     def right(s, amount):
         return s[-amount:]
 
@@ -78,25 +78,20 @@ def driverdata():
     drivershort=right(driverreplace,5)
     drivershort2=right(driverreplace2,5)
 
-    #drivershort=driverreplace[-5:]
-
-    #print(drivershort)
-    # SQL-Statement für die Abfrage der Ausgabe
-
-
-
-    
+    # SQL-Statements for the request of the output
+  
     SQL1="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
     SQL2="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
     
-    
+    # Connecting to the DB to get the data
+
     conn = psycopg2.connect(host=os.environ.get("HOST"), database=os.environ.get("DATABASE"), user=os.environ.get("USER"), password=os.environ.get("PASSWORD"))
     cursor = conn.cursor()
-    
     cursor.execute(SQL1)
     dbdata1= cursor.fetchall()
     if len(dbdata1) == 0:
         return ("Your driver/-s have not attended on this Race weekend. Try choosing a different one!")
+
     outTrack1 =  (dbdata1[0][0])
     outTime1 =  (dbdata1[0][1])
     outLaps1 =  (dbdata1[0][2])
@@ -107,19 +102,13 @@ def driverdata():
     dbdata2 = cursor.fetchall()
     if len(dbdata2) == 0:
         return ("Your driver/-s have not attended on this Race weekend. Try choosing a different one!")
+
     outTrack2 =  (dbdata2[0][0])
     outTime2 =  (dbdata2[0][1])
     outLaps2 =  (dbdata2[0][2])
     outPos2 =  (dbdata2[0][3])
 
-
-
-
-
-
     return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session, dbdata1 = dbdata1, dbdata2 = dbdata2, outTrack1 = outTrack1, outTime1 = outTime1, outLaps1 = outLaps1, outPos1 = outPos1, outTrack2 = outTrack2, outTime2 = outTime2, outLaps2 = outLaps2, outPos2 = outPos2)
-
-
 
 
 if __name__ == "__main__":
@@ -129,7 +118,4 @@ if __name__ == "__main__":
 
 
 
- #print(SQL)
-    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM   f1data. WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'")
-    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver1+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
-    #print("SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1stage.f1data WHERE f1data.\"Drivers\" = '"+ driver2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"')
+ 

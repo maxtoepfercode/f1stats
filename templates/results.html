@@ -8,8 +8,7 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
-<body>
-    
+<body>   
     <header>
         <div class="banner">
             <h1> </h1>
@@ -25,9 +24,6 @@
                     <li> <a href="index.html"> Sign In </a></li>
                     <li> <a href="#"> Register </a> </li>
                 </ul>
-
-
-
 
             </nav>
 
@@ -48,8 +44,7 @@
                             {% for driver in drivers %}
                             <option value="{{driver}}">{{driver}}</option>
                             {% endfor %}
-                        </select>
-                        
+                        </select>    
                      
                     </div>
                     
@@ -63,20 +58,13 @@
                             <option value="{{driver2}}">{{driver}}</option>
                             {% endfor %}
                         </select>
-                        
-                     
                     </div>
                 </div>
-
             </section>
             
             <!-- Grand Prix selection-->
-            
-            
-            
+  
             <section class="boxes-result">
-            
-                 
                     <div class = "col1"> Driver
                     <br>
                     Track
@@ -137,18 +125,7 @@
                     <a href="comparison.html" class="btn">Compare again</a>
                 </div>
             </section>
-
-
-
-
-
-
-
-
-        </div>
-        
-        
-        
+        </div> 
         
         {% block content%} {% endblock %}
     </main>
