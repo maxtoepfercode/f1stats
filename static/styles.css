@@ -1,9 +1,15 @@
 /*CSS Variables */
-@import url(https://db.onlinewebfonts.com/c/06d0fb8eb5251a7dba7660fab5d2f0f9?family=Formula1+Display+Bold);
-@font-face{
-    @font-face {font-family: "Formula1 Display Bold"; src: url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot%22); src: url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot?#iefix%22) format("embedded-opentype"), url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff2%22) format("woff2"), url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.woff%22) format("woff"), url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.ttf%22) src: font-url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot%22) format("truetype"), url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.svg#Formula1 Display Bold") format("svg"); }    
-    src: font-url("https://db.onlinewebfonts.com/t/06d0fb8eb5251a7dba7660fab5d2f0f9.eot")
+@import url(Formula1-Bold.ttf);
+@import url(Formula1-Wide.ttf);
+@font-face {
+    font-family: "Formula1-Bold";
+    src: url("Formula1-Bold.ttf");
 }
+@font-face {
+    font-family: "Formula1-Wide";
+    src: url("Formula1-Wide.ttf");
+}
+
 :root {
     --primary: #ddd;
     --dark: #333;
@@ -24,7 +30,7 @@ body {
     background: var(--light);
     margin: 30px 50px;
     line-height: 1,4;
-    font-family: "Formula1 Display Bold", sans-serif
+    font-family: "Formula1-Bold", sans-serif
 }
 
 .btn {
