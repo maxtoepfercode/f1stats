@@ -95,6 +95,8 @@ def driverdata():
     
     cursor.execute(SQL1)
     dbdata1= cursor.fetchall()
+    if len(dbdata1) == 0:
+        return ("Your driver/-s have not attended on this Race weekend. Try choosing a different one!")
     outTrack1 =  (dbdata1[0][0])
     outTime1 =  (dbdata1[0][1])
     outLaps1 =  (dbdata1[0][2])
@@ -103,6 +105,8 @@ def driverdata():
     cursor = conn.cursor()
     cursor.execute(SQL2)
     dbdata2 = cursor.fetchall()
+    if len(dbdata2) == 0:
+        return ("Your driver/-s have not attended on this Race weekend. Try choosing a different one!")
     outTrack2 =  (dbdata2[0][0])
     outTime2 =  (dbdata2[0][1])
     outLaps2 =  (dbdata2[0][2])

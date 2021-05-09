@@ -37,16 +37,21 @@ body {
     background: var(--red);
     color: var(--light);
     padding: 0.6rem 1.3rem;
-    border: 0;
-    
-    
+    border: 0; 
 }
+
 .btn2 {
     background: var(--red);
     color: var(--light);
     padding: 0.6rem 1.3rem;
     border: 0;
     border-radius: 8px;
+}
+.btn3 {
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    border: 0; 
 }
 
 
@@ -159,6 +164,7 @@ select{
     color: var(--light);
     border: 0;
     border-radius: 8px;
+    font-family: "Formula1-Bold";
 
 }
 
@@ -232,18 +238,14 @@ select{
     padding: 3rem;
     box-shadow: var(--shadow);
     border-radius: 8px;
-    
-    
-    
-    
 
 }
+
 .drivername{
     font-size: 1.3rem;
     color: var(--light);
 
 }
-
 
 /* Boxes */
 .boxes{
