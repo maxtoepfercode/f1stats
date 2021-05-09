@@ -272,7 +272,7 @@ select{
 .boxes-result{
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3,1fr);
     box-shadow: var(--shadow);
     background: var(--red);
     background: url(img/results.jpg);
@@ -280,13 +280,43 @@ select{
     border-radius: 8px;
     color: var(--light);
     background-position: top -820px;
+    padding: 2.0rem;
+}
+.boxes-result h2{
+    font-size: 2.0rem;
+    color: var(--light);
+    position: relative;
+    text-align: right;
 }
 .boxes-result h3{
-    font-size: 1.5rem;
-    margin-bottom: 0;
-    color: var(--dark);
-    position: relative;
+    font-size: 2.0rem;
     color: var(--light);
+    position: relative;
+    text-align: right;
+}
+.boxes-result h4{
+    font-size: 2.0rem;
+    color: var(--light);
+    position: relative;
+    text-align: left;
+}
+.col1{
+    font-size: 2.0rem;
+    color: var(--light);
+    position: relative;
+    text-align: right;
+}
+.col2{
+    font-size: 2.0rem;
+    color: var(--light);
+    position: relative;
+    text-align: right;
+}
+.col3{
+    font-size: 2.0rem;
+    color: var(--light);
+    position: relative;
+    text-align: left;
 }
 .info{
     background: var(--primary);
@@ -295,6 +325,7 @@ select{
     grid-gap: 30px;
     grid-template-columns: repeat(2, 1fr);
     padding: 3rem;
+    border-radius: 8px;
 }
 .info2{
     background: var(--red);

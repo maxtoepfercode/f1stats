@@ -86,34 +86,34 @@ def driverdata():
 
 
     
-    SQL="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
+    SQL1="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
     SQL2="SELECT f1data.\"TRACK\", f1data.\"TIME\",f1data.\"LAPS\", f1data.\"POS\" FROM f1data WHERE RIGHT(REPLACE(f1data.\"Drivers\", ' ',''),5) = '"+drivershort2+"' AND f1data.\"TRACK\" = '"+track+year+"' AND f1data.\"SESSION\" = '"+session+"'"
     
     
     conn = psycopg2.connect(host=os.environ.get("HOST"), database=os.environ.get("DATABASE"), user=os.environ.get("USER"), password=os.environ.get("PASSWORD"))
     cursor = conn.cursor()
     
-    cursor.execute(SQL)
-    dbdata= cursor.fetchall()
-    outTrack2 =  (dbdata[0][0])
-    outTime2 =  (dbdata[0][1])
-    outLaps2 =  (dbdata[0][2])
-    outPos2 =  (dbdata[0][3])
+    cursor.execute(SQL1)
+    dbdata1= cursor.fetchall()
+    outTrack1 =  (dbdata1[0][0])
+    outTime1 =  (dbdata1[0][1])
+    outLaps1 =  (dbdata1[0][2])
+    outPos1 =  (dbdata1[0][3])
     
     cursor = conn.cursor()
     cursor.execute(SQL2)
     dbdata2 = cursor.fetchall()
-    outTrack =  (dbdata[0][0])
-    outTime =  (dbdata[0][1])
-    outLaps =  (dbdata[0][2])
-    outPos =  (dbdata[0][3])
+    outTrack2 =  (dbdata2[0][0])
+    outTime2 =  (dbdata2[0][1])
+    outLaps2 =  (dbdata2[0][2])
+    outPos2 =  (dbdata2[0][3])
 
 
 
 
 
 
-    return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session, dbdata = dbdata, dbdata2 = dbdata2, outTrack = outTrack, outTime = outTime, outLaps = outLaps, outPos = outPos, outTrack2 = outTrack2, outTime2 = outTime2, outLaps2 = outLaps2, outPos2 = outPos2)
+    return render_template('results.html', driver1 = driver1, driver2 = driver2, track = track, year = year, session = session, dbdata1 = dbdata1, dbdata2 = dbdata2, outTrack1 = outTrack1, outTime1 = outTime1, outLaps1 = outLaps1, outPos1 = outPos1, outTrack2 = outTrack2, outTime2 = outTime2, outLaps2 = outLaps2, outPos2 = outPos2)
 
 
 
